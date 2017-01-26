@@ -16,7 +16,10 @@ router.get('/about', (req, res) => {
 	res.render('pages/about');
 });
 
-router.get('/contact', (req, res) => {});
+router.get('/contact', (req, res) => {
+	res.render('pages/contact');
+});
+
 router.post('/contact', (req, res) => {});
 
 router.get('/bodie', (req, res) => {
