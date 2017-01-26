@@ -1,30 +1,26 @@
+/////// EXPRESS.JS ////////
+
 var express = require('express');
+var path = require('path');
+var exphbs = require('express-handlebars'); // require express-handlebars module
 var app = express();
-var port = 8080;
+var host = 'localhost';
+var router = require('./app/routes/routes');
+var options = { dotfiles: 'ignore', etag: false,
+extensions: ['htm', 'html'],
+index: false
+};
+app.set('port', process.env.PORT || 3000);
+
+app.use('/', router);
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// Set static files (css, images, js, etc)
+app.use(express.static(path.join(__dirname, 'public'), options ));
 
 // start the server
-app.listen(port, (req, res) => {
-	console.log('Server running @ http://localhost:'+port)
-});
-
-
-// App routes 
-
-// route for index
-app.get('/', (req, res) => {
-	res.send('Hello world');
-});
-
-// route for about
-app.get('/about', (req, res) => {
-	res.send('about');
-});
-
-// route for contact
-app.get('/contact', (req, res) => {
-	res.send('contact');
-});
-
-app.post('/contact', (req, res) => {
-	res.send('post contact');
+app.listen(app.get('port'), () => {
+	console.log(`App started @ ${host}:${app.get('port')}`);
 });
