@@ -9,11 +9,23 @@ var router = express.Router();
 module.exports = router;
 
 router.get('/', (req, res) => {
-	// res.send('May Node be with you.')
-	res.sendFile(path.join(__dirname, '../../index.html'));
+	res.render('pages/index');
+
 });
 router.get('/about', (req, res) => {
-	res.send('About page')
+	res.render('pages/about');
 });
+
 router.get('/contact', (req, res) => {});
 router.post('/contact', (req, res) => {});
+
+router.get('/bodie', (req, res) => {
+	res.render('pages/bodie');
+});
+
+router.get('/lee', (req, res) => {
+	var context = {
+		town: "Lee Vining"
+	};
+	res.render('town', context);
+});
