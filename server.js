@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var exphbs = require('express-handlebars'); // require express-handlebars module
 var bodyParser = require('body-parser'); // require body-parser module
+var slash   = require('express-slash'); // require express-slash module
 var app = express();
 var host = 'localhost';
 var router = require('./app/routes/routes');
@@ -24,8 +25,14 @@ app.set('view engine', 'handlebars');
 // Set static files (css, images, js, etc)
 app.use(express.static(path.join(__dirname, 'public'), options ));
 
+// Because you're the type of developer who cares about this sort of thing!
+app.enable('strict routing');
+
 // Application routes
+// Add the `slash()` middleware after your app's `router`, optionally specify
+// an HTTP status code to use when redirecting (defaults to 301).
 app.use('/', router);
+app.use(slash());
 
 // start the server
 app.listen(app.get('port'), () => {
