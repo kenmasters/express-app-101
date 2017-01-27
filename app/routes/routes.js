@@ -1,13 +1,9 @@
 // require express
 var express = require('express');
 var path 	= require('path');
-var app = express();
 
 // Create our router object
-var router = express.Router({
-    caseSensitive: app.get('case sensitive routing'),
-    strict       : app.get('strict routing')
-});
+var router = express.Router();
 
 // export our router
 module.exports = router;
