@@ -11,6 +11,10 @@ Node.js + Express + Bootstrap
 2. cd node-site
 3. run `npm install` 
 
+## Template
+
+  [Handlebars](https://github.com/ericf/express-handlebars)
+
 ## Usage 
 
 1. run `npm run dev`
