@@ -1,9 +1,8 @@
 ## Node.js( using Express ) + Bootstrap
 
 ## Installation
-1. Clone repo
-2. cd node-site
-3. run `npm install` 
+1. npm install
+2. npm start
 
 ## Template Engine
   [Handlebars](https://github.com/ericf/express-handlebars)
